@@ -16,7 +16,7 @@ class DashboardController < ApplicationController
     request_repo = Typhoeus::Request.get("https://api.github.com/users/#{params["user_name"]}/repos")
     @github = JSON.parse request_git.body
     repos = JSON.parse request_repo.body
-    @repo_names = repos.has_key?("name") ? repos.collect {|i| i["name"]} : []
+    @repo_names = repos.kind_of?(Array) ? repos.collect {|i| i["name"]} : []
 
   end
 
