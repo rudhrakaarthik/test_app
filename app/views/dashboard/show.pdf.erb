@@ -1,3 +1,4 @@
-<%#= wicked_pdf_stylesheet_link_tag "application", :media => "all" %>
-<%= stylesheet_link_tag "http://#{request.host_with_port}/assets/application.css", :media => "all" %>
+<style>
+  <%= TestApp::Application.assets["application.css"].to_s.html_safe%>
+</style>
 <%= render :partial => "show.html.erb"%>
