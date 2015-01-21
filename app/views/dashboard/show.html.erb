@@ -1,18 +1,9 @@
-Tweet Details:<br/>
-<%if @client_details.present?%>
-UserName: <%= params["user_name"]%><br/>
-Latest 10 Tweets: <br/>
-<% @client_details.each do |text| %>
-    <%= text%><br/>
-<%end%>
-<%else%>
-    <%= @error.present? ? @error: "No data found"%>
-<%end%>
-
-<br/>Github Details: <br/>
-
-Created Date (Indian Time format) : <%= @github["created_at"]%><br/>
-Repo Names :<br/>
-<%@repo_names.each do |repo|%>
-    <%= repo%><br/>
-<%end%>
+<%= form_tag(dashboard_show_path(format: :pdf), id: 'new_user', class: "new_user") do %>
+    <fieldset>
+      <div class="form-group">
+        <%= hidden_field_tag 'user_name', params["user_name"], class: "form-control" %>
+      </div>
+      <%= submit_tag "Print PDF", class: "btn btn-danger pull-right", style: "margin-bottom: 10px" %>
+    </fieldset>
+<% end %>
+<%= render :partial => "show" %>

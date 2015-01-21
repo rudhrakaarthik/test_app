@@ -1,0 +1,59 @@
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Tweet Details:</h3>
+  </div>
+
+  <% if @client_details.present? %>
+      <ul class="list-group">
+        <li class="list-group-item">UserName: <%= params["user_name"] %></li>
+      </ul>
+
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-info"> Latest 10 Tweets:</li>
+        <% @client_details.each do |text| %>
+            <li class="list-group-item"><%= text %></li>
+        <% end %></ul>
+  <% else %>
+      <li class="list-group-item">No Tweets found</li>
+  <% end %>
+</div>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Github Details: </h3>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item">Created Date (Indian Time format)
+      : <%= @github.present? && @github.has_key?("created_at") ? @github["created_at"].to_date.strftime("%d-%m-%Y") : "" %></li>
+  </ul>
+
+  <ul class="list-group">
+    <li class="list-group-item list-group-item-info">Repo Names :</li>
+    <% if @repo_names.present? %>
+        <% @repo_names.each do |repo| %>
+            <li class="list-group-item"><%= repo %></li>
+        <% end %>
+    <% else %>
+        <li class="list-group-item">No Repo found</li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Ruby Gem Details: </h3>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item list-group-item-info"> Name of the Gems :</li>
+  </ul>
+  <% if @gems.present? %>
+      <ul class="list-group">
+        <% @gems.collect { |i| i["name"] }.each do |repo| %>
+            <li class="list-group-item"><%= repo %></li>
+        <% end %>
+      </ul>
+  <% else %>
+      <li class="list-group-item">Given Owner could not be found.</li>
+  <% end %>
+</div>
