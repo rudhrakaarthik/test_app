@@ -1,3 +1,4 @@
+Tweet Details:<br/>
 <%if @client_details.present?%>
 UserName: <%= params["user_name"]%><br/>
 Latest 10 Tweets: <br/>
@@ -5,5 +6,13 @@ Latest 10 Tweets: <br/>
     <%= text%><br/>
 <%end%>
 <%else%>
-    <%= @error%>
+    <%= @error.present? ? @error: "No data found"%>
+<%end%>
+
+<br/>Github Details: <br/>
+
+Created Date (Indian Time format) : <%= @github["created_at"]%><br/>
+Repo Names :<br/>
+<%@repo_names.each do |repo|%>
+    <%= repo%><br/>
 <%end%>

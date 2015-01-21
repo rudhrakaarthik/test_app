@@ -4,11 +4,20 @@ class DashboardController < ApplicationController
   end
 
   def show
-    @client_details = client.user_timeline("#{params["user_name"]}").first(10).map{|tweet| tweet.text}
+    @client_details = client.user_timeline("#{params["user_name"]}").first(10).map{|tweet| tweet.text} rescue nil
+=begin
   rescue => e
     @error = "Error while fetching tweets for: #{params["user_name"]}, #{e.message} "
     Rails.logger.error {@error}
     nil
+=end
+
+    request_git = Typhoeus::Request.get("https://api.github.com/users/#{params["user_name"]}")
+    request_repo = Typhoeus::Request.get("https://api.github.com/users/#{params["user_name"]}/repos")
+    @github = JSON.parse request_git.body
+    repos = JSON.parse request_repo.body
+    @repo_names = repos.has_key?("name") ? repos.collect {|i| i["name"]} : []
+
   end
 
   private

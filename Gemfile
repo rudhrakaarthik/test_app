@@ -26,6 +26,8 @@ gem 'twitter'
 gem 'therubyracer'
 gem "less-rails"
 gem "twitter-bootstrap-rails"
+gem "github_api"
+gem 'typhoeus'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
