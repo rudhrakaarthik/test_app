@@ -1,6 +1,5 @@
 class DashboardController < ApplicationController
 
-  # respond_to :html,:pdf
 
   def index
   end
@@ -27,6 +26,7 @@ class DashboardController < ApplicationController
 
   private
 
+  #
   def client
     @client ||= Twitter::REST::Client.new do |config|
       config.consumer_key = Rails.application.secrets.CONSUMER_KEY
