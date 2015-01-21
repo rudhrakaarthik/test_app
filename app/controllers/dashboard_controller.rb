@@ -18,7 +18,7 @@ class DashboardController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render :pdf => "Receipt",
+        render :pdf => "Twitter-Github-Gem-Details",
                :disposition => 'attachment'
       end
     end
