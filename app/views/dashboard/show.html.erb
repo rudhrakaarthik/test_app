@@ -1,0 +1,9 @@
+<%if @client_details.present?%>
+UserName: <%= params["user_name"]%><br/>
+Latest 10 Tweets: <br/>
+<% @client_details.each do |text| %>
+    <%= text%><br/>
+<%end%>
+<%else%>
+    <%= @error%>
+<%end%>

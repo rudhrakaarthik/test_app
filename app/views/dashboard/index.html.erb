@@ -1,2 +1,9 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
+<%= form_tag(dashboard_show_path, id: 'new_user', class: "new_user") do %>
+    <div class="form-group">
+      <label for="user_email">User Name</label>
+      <%= text_field_tag 'user_name',  nil, class: "form-control"%>
+    </div>
+    <input class="btn btn-default" name="commit" type="submit" value="Submit">
+<% end %>
+
+
